@@ -28,7 +28,7 @@ function Highlights() {
                         <p>Wind</p>
                     </span>
                     <span className='flex gap-2 text-sm px-7'>
-                        <span>{wind} km/h</span>
+                        <span className='shrink-0'>{wind} km/h</span>
                     </span>
                 </span>
 
