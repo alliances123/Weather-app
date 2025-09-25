@@ -8,7 +8,7 @@ function Navbar() {
 
   const dispatch = useDispatch();
   const { isLoading, city } = useSelector((state) => state.city)
-  const [searchedCity, setSearchedCity] = useState('')
+  const [searchedCity, setSearchedCity] = useState('amazo')
 
   useEffect(() => {
     if (searchedCity) {
