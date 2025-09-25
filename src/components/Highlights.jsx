@@ -59,7 +59,7 @@ function Highlights() {
                     </span>
                     <span className='flex gap-5 text-sm px-7'>
                         <span className='flex items-center'>
-                            <span className='p-1 mr-2 rounded-full bg-primary'>
+                            <span className='p-1 mr-2 rounded-full bg-primary text-white'>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-3">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" />
                                 </svg>
@@ -68,7 +68,7 @@ function Highlights() {
                             {sunset}
                         </span>
                         <span className='flex items-center'>
-                            <span className='p-1 mr-2 rounded-full bg-primary'>
+                            <span className='p-1 mr-2 rounded-full bg-primary text-white'>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-3">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
                                 </svg>

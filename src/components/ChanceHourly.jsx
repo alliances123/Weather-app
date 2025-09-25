@@ -51,7 +51,7 @@ function ChanceHourly() {
                                     transition={{ duration: 0.5, delay: index * 0.2 }}
                                 >
                                     <div className="p-3 rounded-lg shadow grid grid-cols-2 bg-base-100 px-4">
-                                        <span className='flex items-center justify-center bg-primary rounded-lg'>
+                                        <span className='flex items-center justify-center text-white bg-primary rounded-lg'>
                                             <p className='flex justify-center items-center gap-2 sm:text-xl'>
                                                 <span className='flex items-center justify-center'>
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4">
