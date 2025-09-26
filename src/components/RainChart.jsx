@@ -6,7 +6,6 @@ function HourlyRain({ list = [] }) {
         return <p>No rain data available</p>
     }
 
-    // بناخد بيانات النهاردة بس
     const today = new Date().getDate()
     const todayForecast = list.filter(item => new Date(item.dt_txt).getDate() === today)
 
@@ -30,7 +29,6 @@ function HourlyRain({ list = [] }) {
                         </div>
                         <div className="w-full bg-base-100 rounded h-2 ml-10">
                             <motion.div
-                                key={idx}
                                 initial={{ width: 0 }}
                                 animate={{ width: `${Math.min(rain * 20, 100)}%` }}
                                 transition={{ duration: 0.5, delay: idx * 0.1 }}

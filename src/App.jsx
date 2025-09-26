@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import Navbar from './components/Navbar';
 import Drawer from './components/Drawer';
+import MapPicker from './components/MapPicker';
 
 function App({ }) {
   const theme = useSelector((state) => state.theme.theme);
@@ -19,11 +20,12 @@ function App({ }) {
 
   return (
     <>
-      <Drawer />
-      <Navbar />
       <BrowserRouter>
+        <Drawer />
+        <Navbar />
         <Routes>
           <Route path='/' element={<HomePage />} />
+          <Route path='/map-picker' element={<MapPicker />} />
           <Route path='*' element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>

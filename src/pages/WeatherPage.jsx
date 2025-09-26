@@ -21,13 +21,17 @@ function WeatherPage() {
         dispatch(loadCityFromStorage());
     }, [dispatch])
 
+    const currentCity = city?.city
+
+    console.log(currentCity)
+
     return (
         <>
             <div className='flex flex-col col-span-4 items-center md:p-5 md:w-auto w-full py-5'>
                 <div className='w-full'>
                     <div className='mb-2 px-2 w-full'>
                         <p className='text-gray-400'>current location</p>
-                        <h1 className='text-xl'>{city?.city?.name},{city?.city?.country}</h1>
+                        {!currentCity || currentCity.name === '' ? (<h1>Unknown Country</h1>) : (<h1 className='text-xl'>{currentCity.name},{currentCity.country}</h1>)}
                     </div>
                     <div className='flex w-full'>
                         <WeatherCard />
@@ -41,9 +45,9 @@ function WeatherPage() {
                         <RainForecast />
                     </div>
                 </div>
-            </div>
+            </div >
             {/* temp sec */}
-            <Details />
+            < Details />
         </>
     )
 }

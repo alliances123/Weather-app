@@ -11,13 +11,20 @@ const initialState = {
 
 export const fetchWeather = createAsyncThunk(
     'fetch/apiFetchSlice',
-    async ({ name }) => {
-        const res = await axios.get(
-            `https://api.openweathermap.org/data/2.5/forecast?q=${name}&appid=${API_KEY}&units=metric`
-        )
-        return res.data
+    async ({ name, lat, lon }) => {
+        let url = "";
+        if (lat && lon) {
+            url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
+        } else if (name) {
+            url = `https://api.openweathermap.org/data/2.5/forecast?q=${name}&appid=${API_KEY}&units=metric`;
+        } else {
+            throw new Error("You must provide either a city name or coordinates");
+        }
+        const res = await axios.get(url);
+        return res.data;
     }
-)
+);
+
 
 const apiFetchSlice = createSlice({
     name: 'apiFetchSlice',

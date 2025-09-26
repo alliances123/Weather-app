@@ -68,7 +68,7 @@ function WeatherCard() {
     return (
         <div className="md:rounded-2xl md:h-80 aspect-video overflow-hidden relative flex md:col-span-2 w-full md:my-0 my-3 text-white">
             <img className='w-full object-cover'
-                src={cityImage}
+                src={cityImage ? cityImage : 'https://c4.wallpaperflare.com/wallpaper/618/711/643/nature-leaves-plants-water-drops-wallpaper-preview.jpg'}
             />
             <span className="w-full h-full bg-black/35 absolute"></span>
             <span className="absolute p-2 w-full flex justify-between items-center">
