@@ -27,8 +27,8 @@ function Highlights() {
                     <span className='text-xs text-gray-300/90 w-full mb-2'>
                         <p>Wind</p>
                     </span>
-                    <span className='flex gap-2 text-sm px-7'>
-                        <span className='shrink-0'>{wind} km/h</span>
+                    <span className='flex gap-2 text-sm px-7 justify-center'>
+                        <span className='shrink-0 '>{wind} km/h</span>
                     </span>
                 </span>
 
@@ -37,7 +37,7 @@ function Highlights() {
                     <span className='text-xs text-gray-300/90 w-full mb-2'>
                         <p>Humidity</p>
                     </span>
-                    <span className='flex gap-2 text-sm px-7'>
+                    <span className='flex gap-2 text-sm px-7 justify-center'>
                         <span>{humidity}%</span>
                     </span>
                 </span>
@@ -47,7 +47,7 @@ function Highlights() {
                     <span className='text-xs text-gray-300/90 w-full mb-2'>
                         <p>Rain</p>
                     </span>
-                    <span className='flex gap-2 text-sm px-7'>
+                    <span className='flex gap-2 text-sm px-7 justify-center'>
                         <span>{rain}%</span>
                     </span>
                 </span>
@@ -67,7 +67,7 @@ function Highlights() {
                             </span>
                             {sunset}
                         </span>
-                        <span className='flex items-center'>
+                        <span className='flex items-center justify-center'>
                             <span className='p-1 mr-2 rounded-full bg-primary text-white'>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-3">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
