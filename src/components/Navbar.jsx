@@ -67,14 +67,20 @@ function Navbar() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
             </svg>
           </button>
-          <h1 className="sm:text-2xl font-bold shrink-0 mr-2 cursor-pointer" onClick={() => navigate('/')}>
-            🌤️ Weather App
+          <h1 className="sm:text-2xl font-bold shrink-0 mr-2 cursor-pointer flex items-center" onClick={() => navigate('/')}>
+            <span className='sm:flex hidden'>
+              🌤️
+            </span>
+            Weather App
           </h1>
-          <button className="btn w-10 p-2 sm:flex hidden" onClick={() => navigate('/map-picker')}>
+          <button className="btn p-2 sm:flex hidden" onClick={() => navigate('/map-picker')}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
               <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
             </svg>
+            <h1>
+              {city ? city.city.name : 'choose a country'}
+            </h1>
           </button>
         </span>
 

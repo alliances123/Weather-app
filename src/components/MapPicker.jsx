@@ -53,8 +53,8 @@ function MapPicker() {
                 style={{ height: "100vh", width: "100%" }}
                 zoomControl={false}
                 maxBounds={[
-                    [-90, -180], // جنوب غرب (أقصى زاوية)
-                    [90, 180]    // شمال شرق (أقصى زاوية)
+                    [-90, -180],
+                    [90, 180]
                 ]}
                 maxBoundsViscosity={1.0}
             >
@@ -67,11 +67,11 @@ function MapPicker() {
             </MapContainer>
 
             {position && (
-                <p className="mt-4 absolute bottom-3 left-2 z-500 text-black">
+                <p className="mt-2 absolute top-[100px] left-2 z-500 text-black">
                     📍 الإحداثيات: {position.lat.toFixed(4)}, {position.lng.toFixed(4)}
                 </p>
             )}
-            <button className="btn absolute bottom-3 right-2 z-500"
+            <button className="btn absolute top-[100px] right-2 z-500"
                 onClick={() => {
                     if (position) {
                         dispatch(fetchWeather({ lat: position.lat, lon: position.lng }));
