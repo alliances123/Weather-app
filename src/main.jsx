@@ -6,6 +6,9 @@ import { Provider } from 'react-redux'
 import './index.css'
 import makeServer from "./server.js"
 
+if (process.env.NODE_ENV === "development") {
+  makeServer()
+}
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
