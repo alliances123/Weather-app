@@ -1,15 +1,11 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { loadCityFromStorage } from '../features/slices/apiFetchSlice.js';
 
 function Highlights() {
 
     const dispatch = useDispatch();
     const { isLoading, city } = useSelector((state) => state.city)
 
-    useEffect(() => {
-        dispatch(loadCityFromStorage())
-    }, [dispatch])
 
     const sunsetTimeInMSecond = new Date(city?.city.sunset * 1000)
     const sunriseTimeInMSecond = new Date(city?.city.sunrise * 1000)

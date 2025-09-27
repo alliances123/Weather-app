@@ -1,15 +1,11 @@
 import React, { useEffect } from 'react'
 import { fetchHourlyWeather } from '../features/slices/hourlyWeatherSlice.js'
 import { useDispatch, useSelector } from 'react-redux'
-import { loadCityFromStorage } from '../features/slices/apiFetchSlice.js';
 import { motion } from "framer-motion";
 
 function ChanceHourly() {
     const { city } = useSelector((state) => state.city)
     const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(loadCityFromStorage());
-    }, [dispatch])
 
     useEffect(() => {
         if (city?.city?.name) {

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { loadCityFromStorage } from '../features/slices/apiFetchSlice.js';
 import axios from "axios";
 
 const API_KEY = import.meta.env.VITE_PEXELS_API
@@ -32,14 +31,11 @@ function WeatherCard() {
     useEffect(() => {
         if (city?.city?.name) {
             fetchCityImage(city.city.name).then((img) => {
-                setCityImage(img)
+                setCityImage(img);
             });
         }
     }, [city]);
 
-    useEffect(() => {
-        dispatch(loadCityFromStorage());
-    }, [dispatch]);
 
     if (!city || !city.list) {
         return (

@@ -2,12 +2,20 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import NotFoundPage from './pages/NotFoundPage'
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
 import Navbar from './components/Navbar';
 import Drawer from './components/Drawer';
 import MapPicker from './components/MapPicker';
+import { loadCityFromStorage } from './features/slices/apiFetchSlice.js';
+import { useDispatch, useSelector } from 'react-redux';
 
 function App({ }) {
+  const { city } = useSelector((state) => state.city)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(loadCityFromStorage())
+  }, [])
+
   const theme = useSelector((state) => state.theme.theme);
 
   useEffect(() => {

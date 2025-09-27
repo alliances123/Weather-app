@@ -47,9 +47,9 @@ const apiFetchSlice = createSlice({
                 state.isLoading = true
             })
             .addCase(fetchWeather.fulfilled, (state, action) => {
-                state.isLoading = false
-                state.city = action.payload
-                localStorage.setItem('city', JSON.stringify(state.city))
+                state.city = action.payload;
+                state.isLoading = false;
+                localStorage.setItem("city", JSON.stringify(action.payload));
             })
             .addCase(fetchWeather.rejected, (state, action) => {
                 state.isLoading = false

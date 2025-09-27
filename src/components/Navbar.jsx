@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchWeather, loadCityFromStorage } from '../features/slices/apiFetchSlice';
+import { fetchWeather } from '../features/slices/apiFetchSlice';
 import { toggleTheme } from '../features/slices/themeSlice';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -15,10 +15,6 @@ function Navbar() {
   const [suggestions, setSuggestions] = useState([])
 
   const dropdownRef = useRef(null)
-
-  useEffect(() => {
-    dispatch(loadCityFromStorage());
-  }, [dispatch])
 
   useEffect(() => {
     const fetchSuggestions = async () => {

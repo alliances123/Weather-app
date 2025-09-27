@@ -2,10 +2,10 @@ import React, { useEffect } from 'react'
 import WeatherCard from '../components/WeatherCard.jsx';
 import AddCity from '../components/AddCity.jsx';
 import Details from '../components/Details.jsx';
-import { loadCityFromStorage } from '../features/slices/apiFetchSlice.js';
 import { useSelector, useDispatch } from 'react-redux';
 import Highlights from '../components/Highlights.jsx';
 import RainForecast from '../components/RainForcast.jsx';
+import Test from '../components/Test.jsx';
 
 function WeatherPage() {
     const dispatch = useDispatch();
@@ -17,13 +17,7 @@ function WeatherPage() {
         ? `http://openweathermap.org/img/wn/${city.list[0].weather[0].icon}@2x.png`
         : null
 
-    useEffect(() => {
-        dispatch(loadCityFromStorage());
-    }, [dispatch])
-
     const currentCity = city?.city
-
-    console.log(currentCity)
 
     return (
         <>
@@ -43,6 +37,9 @@ function WeatherPage() {
                     </div>
                     <div className='flex w-full'>
                         <RainForecast />
+                    </div>
+                    <div className='flex w-full'>
+                        <Test />
                     </div>
                 </div>
             </div >

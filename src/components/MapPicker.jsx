@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchWeather, loadCityFromStorage, setCity } from '../features/slices/apiFetchSlice';
+import { fetchWeather } from '../features/slices/apiFetchSlice';
 import { useNavigate } from "react-router-dom";
 
 delete L.Icon.Default.prototype._getIconUrl;
@@ -31,10 +31,6 @@ function MapPicker() {
     const dispatch = useDispatch()
 
     const [position, setPosition] = useState(city?.city?.coord ? { lat: city.city.coord.lat, lng: city.city.coord.lon } : null);
-
-    useEffect(() => {
-        dispatch(loadCityFromStorage());
-    }, [dispatch])
 
     useEffect(() => {
         if (city?.city?.coord) {
