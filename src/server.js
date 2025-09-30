@@ -28,7 +28,6 @@ function makeServer() {
 
         routes() {
 
-            this.urlPrefix = "http://localhost:5173"
             this.namespace = "api"
 
             this.get("/cities", (schema) => schema.cities.all())
@@ -37,9 +36,9 @@ function makeServer() {
                 return schema.weathers.where({ cityId })
             })
 
-            this.passthrough()
             this.passthrough("https://api.openweathermap.org/**");
             this.passthrough("https://api.pexels.com/**");
+            this.passthrough()
 
         }
 

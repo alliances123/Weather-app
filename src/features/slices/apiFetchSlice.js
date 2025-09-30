@@ -25,7 +25,6 @@ export const fetchWeather = createAsyncThunk(
     }
 );
 
-
 const apiFetchSlice = createSlice({
     name: 'apiFetchSlice',
     initialState,
