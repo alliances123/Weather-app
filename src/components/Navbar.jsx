@@ -11,30 +11,51 @@ function Navbar() {
   const navigate = useNavigate()
   const dispatch = useDispatch();
   const { isLoading, city, error } = useSelector((state) => state.city)
-  const [searchedCity, setSearchedCity] = useState('')
   const [suggestions, setSuggestions] = useState([])
+
+  const [searchedCity, setSearchedCity] = useState('') // input value
+  const [fetchedCities, setFetchedCities] = useState([]) // data from db => map
+  const [fetchSearchedCity, setFetchSearchedCity] = useState() // posted name
 
   const dropdownRef = useRef(null)
 
+  // get
   useEffect(() => {
-    const fetchSuggestions = async () => {
-      if (searchedCity.length < 2) {
-        setSuggestions([])
-        return
-      }
+    const fetchDb = async () => {
       try {
-        const res = await axios.get(
-          `https://api.openweathermap.org/geo/1.0/direct?q=${searchedCity}&limit=5&appid=${API_KEY}`
-        )
-        setSuggestions(res.data)
+        const res = await axios.get('http://localhost:3001/countries')
+        const data = res.data
+        setFetchedCities(data)
+        return data
       } catch (err) {
-        console.error(err)
+        console.error("Error fetching countries:", error);
       }
     }
+    fetchDb()
+  }, [])
 
-    const delay = setTimeout(fetchSuggestions, 500)
-    return () => clearTimeout(delay)
-  }, [searchedCity])
+  // post
+  const postNewDb = async (name) => {
+    if (!name) return;
+    try {
+      const res = await axios.post('http://localhost:3001/countries', {
+        countryName: name,
+        lat: null,
+        lon: null,
+      })
+      setFetchedCities(prev => [...prev, res.data])
+      return res.data
+    } catch (error) {
+      console.error("Error fetching countries:", error);
+    } finally {
+      setSearchedCity('')
+    }
+  }
+
+  useEffect(() => {
+    console.log('=============')
+    console.log(fetchedCities)
+  }, [fetchedCities])
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -47,9 +68,9 @@ function Navbar() {
   }, [])
 
   const handleSelectCity = (cityObj) => {
-    dispatch(fetchWeather({ name: cityObj.name }))
+    dispatch(fetchWeather({ name: cityObj.name })) // communicate with api => db
     setSearchedCity('')
-    setSuggestions([])
+    // setSuggestions([])
   }
 
   return (
@@ -80,15 +101,15 @@ function Navbar() {
           </button>
         </span>
 
-        <div className="relative sm:w-80 " ref={dropdownRef}>
+        <div className="relative sm:w-80 flex" ref={dropdownRef}>
           <input
             type="text"
             placeholder='search about city...'
             value={searchedCity}
             onChange={(e) => setSearchedCity(e.target.value)}
-            className="input input-bordered w-full"
+            className="input rounded-l-lg rounded-r-none input-bordered w-full"
           />
-
+          {/* 
           {suggestions.length > 0 && (
             <ul className="absolute mt-1 bg-base-100 border rounded-lg shadow-md w-full z-50">
               {suggestions.map((s, i) => (
@@ -101,7 +122,12 @@ function Navbar() {
                 </li>
               ))}
             </ul>
-          )}
+          )} */}
+          <button onClick={() => postNewDb(searchedCity)} className='p-3 bg-primary rounded-r-lg'>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4">
+              <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+            </svg>
+          </button>
         </div>
       </span>
 
@@ -111,7 +137,7 @@ function Navbar() {
       >
         theme
       </button>
-    </header>
+    </header >
   )
 }
 

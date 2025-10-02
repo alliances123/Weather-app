@@ -21,7 +21,9 @@ export const fetchWeather = createAsyncThunk(
             throw new Error("You must provide either a city name or coordinates");
         }
         const res = await axios.get(url);
-        return res.data;
+        const data = res.data
+        console.log(data)
+        return data;
     }
 );
 
@@ -49,10 +51,12 @@ const apiFetchSlice = createSlice({
                 state.city = action.payload;
                 state.isLoading = false;
                 localStorage.setItem("city", JSON.stringify(action.payload));
+                console.log("✅ Fulfilled:", action.payload);
             })
             .addCase(fetchWeather.rejected, (state, action) => {
-                state.isLoading = false
                 state.error = action.error.response?.data?.message || action.error.message
+                console.error("❌ Rejected:", state.error);
+                state.isLoading = false
             })
     },
 })

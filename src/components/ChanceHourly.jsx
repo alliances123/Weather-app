@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 function ChanceHourly() {
     const { city } = useSelector((state) => state.city)
     const dispatch = useDispatch();
-
     useEffect(() => {
         if (city?.city?.name) {
             dispatch(fetchHourlyWeather({ name: city.city.name }));

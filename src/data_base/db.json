@@ -1,0 +1,22 @@
+{
+  "countries": [
+    {
+      "id": 1,
+      "countryName": "Egypt",
+      "lat": null,
+      "lon": null
+    },
+    {
+      "id": "e98d",
+      "countryName": "cairo",
+      "lat": null,
+      "lon": null
+    },
+    {
+      "id": "7c10",
+      "countryName": "Amazon",
+      "lat": null,
+      "lon": null
+    }
+  ]
+}
